@@ -14,3 +14,37 @@
     <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected is into the page.</li>
     <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>
 </ul>
+
+<h3>Singers App</h3>
+<div class="col-md-8">
+    <table>
+        <thead>
+        <tr>
+            <th style="cursor: pointer" (click)="orderSingers('name')">Singer</th>
+            <th style="cursor: pointer"  (click)="orderSingers('like')">Like</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let singer of singers">
+            <td>{{singer.name}}</td>
+            <td>{{singer.like| like}}</td>
+            <td>
+                <button class="btn btn-default" (click)="editSinger(singer)">Edit</button>
+                <button class="btn btn-default" (click)="deleteSinger(singer)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <div class="col-md-8">
+        <label for="singer">Singer:</label>
+        <input id="singer" type="text" #singer value="{{currentSinger?.name}}"/>
+        <label for="like">Like:</label>
+        <input id="like" type="number" #like value="{{currentSinger?.like}}"/>
+        <input type="hidden" #id value="{{currentSinger?.id}}" />
+        <button class="btn btn-default" (click)="addSinger(singer.value,like.value)">Add</button>
+        <button class="btn btn-default" (click)="updateSinger(singer.value,like.value,id.value)">Update</button>
+    </div>
+</div>
+

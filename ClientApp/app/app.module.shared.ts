@@ -10,13 +10,17 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 
+import { SingerService } from "./components/home/singer.service";
+import {LikePipe} from "./components/home/like.pipe";
+
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        LikePipe,
     ],
     imports: [
         CommonModule,
@@ -29,7 +33,11 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        SingerService,
     ]
 })
+
 export class AppModuleShared {
 }
